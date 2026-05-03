@@ -32,7 +32,7 @@ router.post("/sign-up", async (req, res) => {
       ...req.body,
       hashedPassword: bcrypt.hashSync(req.body.password, 12),
     });
-    const token = jwt.sign({ user }, process.env.SECRET_KEY, { expiresIn: '10m'});
+    const token = jwt.sign({ user }, process.env.SECRET_KEY);
 
     res.status(201).json({ token });
   } catch (error) {
